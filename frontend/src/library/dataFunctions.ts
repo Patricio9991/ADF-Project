@@ -9,6 +9,14 @@ export const submitData = async (data:object)=>{console.log(data)
 }
 
 
+export const checkAxiosErrorMessage = (error:unknown)=>{
+
+    if(axios.isAxiosError(error)){
+        const errorMessage = error.response?.data.message
+        return errorMessage
+        
+    }
+}
 
 export const registerDataUser = async (data:object)=>{
   
@@ -21,5 +29,9 @@ export const registerDataUser = async (data:object)=>{
 
 
 export const logInUser = async (data:object) =>{
-    await axios.post('http://localhost:3000/api/login',data)
+
+        
+    return await axios.post('http://localhost:3000/api/login',data)
+
+
 }

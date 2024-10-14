@@ -8,7 +8,7 @@ import BookCard from "../components/BookCard";
 export default function Books(){
  return(
     <Fragment>
-        <div className="flex flex-row h-screen pt-10">
+        <div className="flex flex-row pt-10">
             <BookCard title="Ensueño del Tartaro" imgSRC={Ensueño} />
             <BookCard title="Zodiactale" imgSRC={Lush} />
         </div>

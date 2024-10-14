@@ -9,6 +9,11 @@ export default {
       
       fontFamily: {
         times: ['"Times New Roman"', 'Times', 'serif'],
+        cincel: ["Cinzel", 'cincel', 'serif'],
+
+      },
+      gradientColorStopPositions: {
+        13: '13%',
       }
       
     },

@@ -10,7 +10,7 @@ export default function App() {
 
   
   return (
-    <div className="bg-red-900 h-fit relative">
+    <div className=" bg-red-800 w-full h-screen">
 
 
       <BrowserRouter>

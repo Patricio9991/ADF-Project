@@ -30,11 +30,52 @@ export const registerNewUser = async (req,res)=>{
 }
 
 
+
+
+const accesWith = async (field,data,req,res) =>{
+
+    const queryTarget = {}
+    queryTarget[field] = data
+    
+    try {
+        
+        const targetData = await userSchema.findOne(queryTarget)
+        if(!targetData) throw new Error("Usuario no encontrado")
+
+        const matchPassword = await bcrypt.compare(req.body.password,targetData.password)
+        if(!matchPassword) throw new Error("Contraseña equivocada")
+
+
+        return { success: true, data: targetData };
+
+    } catch (error) {
+        return { success: false, message: error.message };
+    }
+
+
+}
+
+
 export const loginUserData = async (req,res)=>{
     const {inData,password} = req.body
 
     if(isNaN(inData)){
         console.log("Esta ingresando con el nombre de usuario")
+        try {
+            
+            const result = await accesWith("username",inData,req,res)
+     
+            console.log(result)
+
+            if(!result.success) return res.status(400).json({message:`Datos erroneos`})
+
+            return res.status(200).json({userFound: result.data})
+
+        } catch (error) {
+            console.log(error)
+        }
+       
+      
     }else{
         console.log("Esta ingresando con el numero de telefono")
     }

@@ -1,6 +1,6 @@
 import { Fragment } from "react/jsx-runtime";
 import {useForm} from 'react-hook-form'
-import {submitData} from '../context/dataFunctions.ts'
+import {submitData} from '../library/dataFunctions.ts'
 
 import { IoChevronBackSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";

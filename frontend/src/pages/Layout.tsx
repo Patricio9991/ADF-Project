@@ -18,7 +18,7 @@ export function Layout() {
     const backArrow = location.pathname === '/' ? 'invisible':'visible'
 
     return (
-      <div className="bg-red-900 h-fit relative">
+      <div className="h-fit ">
 
         <Link to="/">
           <IoChevronBackSharp size={30} className={`absolute left-0 top-5 hover:cursor-pointer ${backArrow}`} />

@@ -1,7 +1,9 @@
 import { Fragment } from "react/jsx-runtime";
 import { useForm } from "react-hook-form";
-// import { useState } from "react";
-import { logInUser } from "../context/dataFunctions";
+import { logInUser,checkAxiosErrorMessage } from "../library/dataFunctions";
+import {useState } from "react";
+import {useNavigate} from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 
 interface logInFormData {
@@ -14,13 +16,44 @@ interface logInFormData {
 export default function LogIn(){
 
     const {handleSubmit,register} = useForm<logInFormData>()
-    // const [flagError,setFlagError] = useState(false)
+    const [flagError,setFlagError] = useState(false)
+    const [error,setError] = useState()
     const clasesInputsData = "rounded-md text-xl h-10 w-[400px] p-5" 
 
+    const navigate = useNavigate()
+
+
+    
+
+    
+
+
     const onSubmit = async (data:logInFormData)=>{
-        await logInUser(data)
-        // setFlagError(true)
+        try {
+            
+            const response = await logInUser(data)
+            console.log(response)
+    
+            
+            if(response.status){
+                Cookies.set('username','pepe') 
+            
+                navigate('/') 
+                
+            }
+                
+            
+            
+        } catch (error:unknown) {
+
+            setFlagError(true)
+
+            setError(checkAxiosErrorMessage(error))
+            
+        }
     }
+
+    console.log(error,flagError)
 
     return(
         <Fragment>
@@ -40,7 +73,7 @@ export default function LogIn(){
 
                 <input type="submit" value="Ingresar" className={`rounded-md text-xl h-10 w-[400px] hover:bg-red-700 hover:cursor-pointer`}/>
 
-                {/* {flagError ? <span className="text-lg font-bold absolute bottom-24">{`${error}!`}</span>:""} */}
+                {flagError ? <span className="text-lg font-bold absolute bottom-24">{`${error}!`}</span>:""} 
             </form>
 
 

@@ -1,8 +1,7 @@
 import { Fragment } from "react/jsx-runtime";
 import {useForm} from 'react-hook-form'
+import { checkAxiosErrorMessage, registerDataUser } from "../library/dataFunctions";
 
-import { registerDataUser } from "../context/dataFunctions";
-import axios from "axios";
 import { useState } from "react";
 
 
@@ -33,11 +32,9 @@ export default function Register(){
 
         } catch (error:unknown) {
 
-            if(axios.isAxiosError(error)){
-                setError(error.response?.data.message)
-                setFlagError(true)
-            }
-            
+            setFlagError(true)
+
+            setError(checkAxiosErrorMessage(error))
         } 
     }
 
