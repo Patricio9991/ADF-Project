@@ -11,6 +11,7 @@ import unicorn from '../assets/uicorn.webp'
 
 
 
+
 export default function Home(){
 
 
@@ -28,7 +29,7 @@ export default function Home(){
                     <img src={unicorn} className="h-[200px]"></img>
                 </div>
             </div>
-
+           
         </Fragment>
     )
 }

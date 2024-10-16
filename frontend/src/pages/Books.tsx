@@ -1,7 +1,8 @@
 import { Fragment } from "react/jsx-runtime";
-import Lush from '../assets/ZODIACTALE RGB.jpg'
-import Ensueño from '../assets/Portada ET completa sola.jpg'
+
+
 import BookCard from "../components/BookCard";
+import {ADFbooks} from '../books/books.ts'
 
 
 
@@ -9,8 +10,8 @@ export default function Books(){
  return(
     <Fragment>
         <div className="flex flex-row pt-10">
-            <BookCard title="Ensueño del Tartaro" imgSRC={Ensueño} />
-            <BookCard title="Zodiactale" imgSRC={Lush} />
+            <BookCard title={ADFbooks[0].titulo} imgSRC={ADFbooks[0].cover} />
+            <BookCard title={ADFbooks[1].titulo} imgSRC={ADFbooks[1].cover} />
         </div>
     </Fragment>
  )

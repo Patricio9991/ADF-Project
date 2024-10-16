@@ -4,6 +4,7 @@ import magicBook from '../assets/book.gif'
 
 
 
+
 export default function NavBar(){
 
 
