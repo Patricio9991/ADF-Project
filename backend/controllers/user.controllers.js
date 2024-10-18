@@ -18,7 +18,7 @@ export const registerNewUser = async (req,res)=>{
             password
         })
 
-         console.log(newReader)
+        console.log(newReader)
 
         await newReader.save()
 
@@ -57,26 +57,24 @@ const accesWith = async (field,data,req,res) =>{
 
 
 export const loginUserData = async (req,res)=>{
-    const {inData,password} = req.body
+    const {inData} = req.body
+ //veri si es telfono o usuario para realizar la busqueda 
 
-    if(isNaN(inData)){
-        console.log("Esta ingresando con el nombre de usuario")
-        try {
-            
-            const result = await accesWith("username",inData,req,res)
-     
-            console.log(result)
+    try {
+        
+        const result = await accesWith("username",inData,req,res)
+    
+        console.log(result)
 
-            if(!result.success) return res.status(400).json({message:`Datos erroneos`})
+        if(!result.success) return res.status(400).json({message:result.message})
 
-            return res.status(200).json({userFound: result.data})
+        return res.status(200).json({userFound: result.data})
 
-        } catch (error) {
-            console.log(error)
-        }
+    } catch (error) {
+        console.log(error)
+    }
        
       
-    }else{
-        console.log("Esta ingresando con el numero de telefono")
-    }
 }
+       
+    

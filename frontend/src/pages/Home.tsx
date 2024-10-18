@@ -5,7 +5,8 @@ import NavBar from "../components/NavBar";
 import News from "./News";
 // import Fantasy from '../assets/fantasy.png'
 // import Cat from '../assets/sleepingCat.gif'
-import unicorn from '../assets/uicorn.webp'
+import unicorn from '../assets/varios/uicorn.webp'
+
 
 
 
@@ -14,6 +15,7 @@ import unicorn from '../assets/uicorn.webp'
 
 export default function Home(){
 
+    
 
 
     return(

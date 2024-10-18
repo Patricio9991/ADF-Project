@@ -1,4 +1,4 @@
-import axios from 'axios' 
+import axios, { AxiosError } from 'axios' 
 
 
 
@@ -20,8 +20,12 @@ export const checkAxiosErrorMessage = (error:unknown)=>{
 
 export const registerDataUser = async (data:object)=>{
   
-        
- await axios.post('http://localhost:3000/api/register',data)
+  try {
+    
+      await axios.post('http://localhost:3000/api/register',data)
+  } catch (error) {
+    console.log(error)
+  }      
         
   
 }
@@ -31,7 +35,11 @@ export const registerDataUser = async (data:object)=>{
 export const logInUser = async (data:object) =>{
 
         
-    return await axios.post('http://localhost:3000/api/login',data)
+    const response = await axios.post('http://localhost:3000/api/login',data)
+
+    if(!response) throw new AxiosError("Algo salio mal :(")
+
+    return response
 
 
 }

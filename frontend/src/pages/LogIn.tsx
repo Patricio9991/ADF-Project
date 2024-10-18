@@ -31,18 +31,19 @@ export default function LogIn(){
     const onSubmit = async (data:logInFormData)=>{
         try {
             
-            const response = await logInUser(data)
-            console.log(response)
+            const logInData = await logInUser(data)
+            console.log(logInData)
     
             
-            if(response.status){
-                Cookies.set('username','pepe') 
+            if(logInData.status){
+                const username = logInData.data.userFound.username
+                Cookies.set('username',username) 
             
                 navigate('/') 
                 
             }
                 
-            
+        
             
         } catch (error:unknown) {
 
