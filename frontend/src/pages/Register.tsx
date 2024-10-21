@@ -1,7 +1,7 @@
 import { Fragment } from "react/jsx-runtime";
 import {useForm} from 'react-hook-form'
 import { checkAxiosErrorMessage, registerDataUser } from "../library/dataFunctions";
-
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 
@@ -14,7 +14,7 @@ interface RegisterFormData {
 
 
 export default function Register(){
-
+    const navigate = useNavigate()
     const [error,setError] = useState()
     const [flagError,setFlagError] = useState(false)
     const {register,handleSubmit} = useForm<RegisterFormData>()
@@ -29,6 +29,7 @@ export default function Register(){
         try {
                     
             await registerDataUser(data)
+            navigate('/')
 
         } catch (error:unknown) {
 

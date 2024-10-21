@@ -37,7 +37,12 @@ export default function LogIn(){
             
             if(logInData.status){
                 const username = logInData.data.userFound.username
-                Cookies.set('username',username) 
+                Cookies.set('username',username,{
+                    secure: true,        // Asegura que solo se envíe a través de HTTPS
+                    sameSite: 'Strict',  // Protege contra CSRF, solo se envía en el mismo dominio
+                    expires: 7,          // Expira en 7 días (puedes cambiarlo según tus necesidades)
+                    path: '/',           // La cookie será válida en toda la aplicación
+                  }) 
             
                 navigate('/') 
                 

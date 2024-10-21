@@ -3,6 +3,7 @@ import magicBook from '../assets/varios/book.gif'
 import cookie from 'js-cookie'
 import LoginRegister from "./LoginRegister";
 import UserBarInfo from "./UserBarInfo";
+import { Link } from "react-router-dom";
 
 export default function NavBar(){
 
@@ -18,8 +19,8 @@ export default function NavBar(){
                         <img src={magicBook} className="h-[50px]"/>
                     </h1>
 
+                    {dataUser.username === "Patricio Pucheta"? <Link to="/nuevo">Nuevo</Link>:""}
                     {dataUser.username ? <UserBarInfo username={dataUser.username}/>:<LoginRegister />}
-                    
 
                 </div>
 

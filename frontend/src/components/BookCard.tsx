@@ -2,14 +2,19 @@ import { Fragment } from "react/jsx-runtime";
 import { FaBookReader } from "react-icons/fa";
 import { CiStar } from "react-icons/ci";
 import { FaFileDownload } from "react-icons/fa";
-import { FaCartShopping } from "react-icons/fa6";
+import { FaMoneyBill } from "react-icons/fa6";
+
 import BookModal from "./BookModal";
 import { useState } from "react";
+import Swal from 'sweetalert2'
+
+import cookie from 'js-cookie'
 
 interface bookInfo{
     title:string,
     imgSRC: string,
-    sinopsis:string
+    sinopsis:string,
+
 }
 
 
@@ -17,7 +22,9 @@ export default function BookCard({title,imgSRC,sinopsis}:bookInfo){
 
     const [modalFlag,setModalFlag] = useState(false)
 
-    console.log(modalFlag)
+    const loggedIn = cookie.get().username? true : false
+    console.log(loggedIn)
+
     return(
         <Fragment>
             <div className="w-[300px] p-6 hover:w-[310px] cursor-pointer">
@@ -31,9 +38,44 @@ export default function BookCard({title,imgSRC,sinopsis}:bookInfo){
                     <FaBookReader size={30} className="hover:text-sky-600"/>
 
                     <CiStar  size={30} className="hover:text-yellow-400"/>
-                    <FaCartShopping size={30} className=" hover:text-white"/>
+                    <FaMoneyBill size={30} className=" hover:text-green-500"/>
                     
-                    <FaFileDownload size={30} className="ml-auto hover:text-emerald-400"/>
+                    
+                    <a
+                        className={`ml-auto hover:text-emerald-400`}
+                        href={loggedIn ? `/downloads/${title}.pdf` : "#"}
+                        download={loggedIn ? `${title}.pdf` : ""}
+                        onClick={(e) => {
+                            if (!loggedIn) {
+                                e.preventDefault(); // Evita la acción predeterminada
+                                Swal.fire({
+                                    title: `Descargar ${title}?`,
+                                    text: "Debes iniciar sesión para descargar el archivo.",
+                                    icon: "question",
+                                    showCancelButton: true,
+                                    confirmButtonText: 'Iniciar sesión',
+                                    cancelButtonText: 'Cancelar',
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        // Redirigir a la página de inicio de sesión si es necesario
+                                        window.location.href = '/login'; // Cambia esto a la ruta de tu inicio de sesión
+                                    }
+                                });
+                            }else {
+                                // Si el usuario está logueado, iniciamos la descarga
+                                
+                                Swal.fire({
+                                    title: '¡Descarga en curso!',
+                                    text: `¡${title} se ha descargará pronto!`,
+                                    icon: 'success',
+                                });
+                                // Ajusta el tiempo de espera según sea necesario
+                            }
+                        }}
+>
+    <FaFileDownload size={30} />
+</a>
+                    
                     
                     {modalFlag ? <div ><BookModal title={title} imgSRC={imgSRC} sinopsis={sinopsis}
                     close={()=>setModalFlag(false)}/></div>: ""}

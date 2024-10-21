@@ -11,6 +11,9 @@ const server = express()
 const PORT = 3000
 
 connectDB()
+
+
+
 server.use(cors())
 server.use(express.json())
 server.use(morgan('dev'))

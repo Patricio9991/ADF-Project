@@ -55,20 +55,39 @@ const accesWith = async (field,data,req,res) =>{
 
 }
 
+const logInSwitcher = async (userOrPhone,accessData,req,res)=>{
 
-export const loginUserData = async (req,res)=>{
-    const {inData} = req.body
- //veri si es telfono o usuario para realizar la busqueda 
-
-    try {
-        
-        const result = await accesWith("username",inData,req,res)
+    if(userOrPhone){ 
+        const result = await accesWith("username",accessData,req,res)
     
         console.log(result)
 
         if(!result.success) return res.status(400).json({message:result.message})
 
+        return res.json({userFound: result.data})
+
+    }else{
+        const result = await accesWith("phoneNumber",accessData,req,res)
+    
+        console.log(result)
+
+        if(!result.success) return res.status(400).json({message:result.message})
+
+
+        
         return res.status(200).json({userFound: result.data})
+    }
+
+}
+
+
+export const loginUserData = async (req,res)=>{
+    const {inData} = req.body
+    //veri si es telfono o usuario para realizar la busqueda 
+
+    const checkUsernameOrPhone = isNaN(inData) //true = username
+    try {
+        logInSwitcher(checkUsernameOrPhone,inData,req,res)
 
     } catch (error) {
         console.log(error)

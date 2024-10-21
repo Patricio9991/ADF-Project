@@ -17,6 +17,7 @@ export const ADFbooks: Novel[] = [
     {
         cover: covers.Ensueño,
         titulo:"Ensueño del Tártaro",
+        sinopsis:sinopsis.sinopsisEnsueño,
         release: 2021,
         digital:true,
         fisico:true,
