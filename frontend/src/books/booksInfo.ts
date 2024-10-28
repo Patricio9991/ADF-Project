@@ -1,7 +1,7 @@
 import * as covers  from '../assets/covers.ts'
 import * as sinopsis from './sinopsis.ts'
 
-interface Novel {
+export interface Novel {
     cover?:string | "" ,
     titulo:string,
     sinopsis?:string,

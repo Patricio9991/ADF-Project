@@ -6,6 +6,10 @@ const writingSchema = new mongoose.Schema({
         type:String,
         default:"Untitled"
     },
+    capitulo:{
+        type:String,
+        default:"Untitled Chapter"
+    },
     fecha:{
         type:Date,
         default:Date.now()

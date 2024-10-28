@@ -9,7 +9,7 @@ export default function NavBar(){
 
     
     const dataUser = cookie.get() 
-
+    const author = "Patricio Pucheta"
     console.log(dataUser)
     return(
         <Fragment>
@@ -19,7 +19,10 @@ export default function NavBar(){
                         <img src={magicBook} className="h-[50px]"/>
                     </h1>
 
-                    {dataUser.username === "Patricio Pucheta"? <Link to="/nuevo">Nuevo</Link>:""}
+                    <span className="text-xl">
+                        {dataUser.username === author ? <Link to="/nuevo">Publicar</Link>:""}
+                    </span>
+
                     {dataUser.username ? <UserBarInfo username={dataUser.username}/>:<LoginRegister />}
 
                 </div>
