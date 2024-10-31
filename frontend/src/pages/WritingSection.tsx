@@ -20,7 +20,7 @@ export default function WritingSection(){
 
     const chapters = []
 
-    for(let i=0;i<=99;i++){
+    for(let i=0;i<=30;i++){
         chapters.push(i)
     }
   
@@ -34,7 +34,7 @@ export default function WritingSection(){
                 </Link>
                 
                 <select
-                    className="h-12 rounded-lg text-center font-bold text-2xl"
+                    className=" rounded-lg text-center font-bold text-2xl"
                     {...register("Titulo")}
                     >
                     <option value="" disabled selected hidden>
@@ -55,7 +55,7 @@ export default function WritingSection(){
                     className="h-12 rounded-lg text-center font-bold text-xl"
                 /> */}
                 
-                    <select id="chapters" {...register("Capitulo")} className="h-12 rounded-lg text-center font-bold text-xl overflow-hidden" >
+                    <select id="chapters" {...register("Capitulo")} className="rounded-lg text-center font-bold text-xl " >
                         {chapters.map((ch) => (
                             <option key={ch} value={`Capítulo ${ch}`} >
                             {` Capitulo ${ch === 0? "Prologo":`${ch}`}`}

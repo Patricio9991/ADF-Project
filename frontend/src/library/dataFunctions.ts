@@ -43,3 +43,20 @@ export const logInUser = async (data:object) =>{
 
 
 }
+
+
+
+
+export const findChaptes = async(data:object)=>{
+
+    try {
+        
+        const response = await axios.post('http://localhost:3000/api/getChapters',data)
+        return response
+    } catch (error) {
+        console.log(error)
+    }
+
+
+
+}

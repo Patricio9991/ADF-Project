@@ -1,6 +1,8 @@
 import * as covers  from '../assets/covers.ts'
 import * as sinopsis from './sinopsis.ts'
 
+
+
 export interface Novel {
     cover?:string | "" ,
     titulo:string,
@@ -44,7 +46,7 @@ export const ADFbooks: Novel[] = [
         titulo:"La necropolis del Hongo",
         digital:true,
         fisico:false,
-        finalizado:true
+        finalizado:false
     },
     {
         
