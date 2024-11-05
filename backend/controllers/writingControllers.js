@@ -39,9 +39,9 @@ export const updateStory = async (req,res)=>{
 
 
 export const getChapters = async(req,res)=>{
-    const requestedNovelTitle = req.body[0].titulo
-
+    const requestedNovelTitle = req.body.titulo
+    console.log(requestedNovelTitle)
+    
     const targetNovelData = await writingSchema.find({titulo: requestedNovelTitle})
-
     res.json(targetNovelData)
 }

@@ -47,7 +47,7 @@ export const logInUser = async (data:object) =>{
 
 
 
-export const findChaptes = async(data:object)=>{
+export const findChapters = async(data:object)=>{
 
     try {
         

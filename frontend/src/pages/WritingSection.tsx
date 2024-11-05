@@ -17,6 +17,15 @@ export default function WritingSection(){
     const {register,handleSubmit,control} = useForm()
     const [value, setValue] = useState('');
     
+    const modules = {
+        toolbar:[
+          [{ 'header': [1, 2, false] }],
+          ['bold', 'italic', 'underline'],
+          [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+          [{ 'align': [] }], // Agregar opciones de alineación
+          ['clean'] // Botón para limpiar formato
+        ],
+      }
 
     const chapters = []
 
@@ -87,6 +96,7 @@ export default function WritingSection(){
                                 field.onChange(val); // También actualiza el valor en react-hook-form
                             }}
                             placeholder="Pega tu contenido aquí..."
+                            modules={modules}
                             className="bg-white border border-gray-300 rounded-md overflow-hidden w-5/6 h-screen"
                             
                         />
