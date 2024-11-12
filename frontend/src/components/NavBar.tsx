@@ -15,15 +15,18 @@ export default function NavBar(){
         <Fragment>
                 <div className="flex flex-row justify-between items-center  bg-purple-500 py-4 ">
 
-                    <h1 className="text-5xl font-cincel underline flex flex-row gap-10">AUTOR DE FANTASIAS
-                        <img src={magicBook} className="h-[50px]"/>
+                    <h1 className="sm:flex sm:flex-col sm:items-center text-5xl font-cincel underline flex flex-row gap-10">AUTOR DE FANTASIAS
+                        <img src={magicBook} className=" sm:h-[50px] sm:w-[50px] md:h-[50px]"/>
                     </h1>
+                    {/* <span className="sm:bg-white">X</span> */}
 
-                    <span className="text-xl">
+                    <span className="text-xl sm:hidden">
                         {dataUser.username === author ? <Link to="/nuevo">Publicar</Link>:""}
                     </span>
 
-                    {dataUser.username ? <UserBarInfo username={dataUser.username}/>:<LoginRegister />}
+                    <span className="">
+                        {dataUser.username ? <UserBarInfo username={dataUser.username}/>:<LoginRegister />}
+                    </span>
 
                 </div>
 

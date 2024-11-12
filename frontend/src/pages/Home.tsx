@@ -23,7 +23,7 @@ export default function Home(){
             
 
             <NavBar/>
-            <div className="flex sm:flex-col md:flex-row justify-evenly ">
+            <div className="sm:flex sm:flex-col md:flex-row justify-evenly ">
                 <Books/>
                 <News/>
             </div>

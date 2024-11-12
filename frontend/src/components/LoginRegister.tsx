@@ -8,7 +8,7 @@ import { Fragment } from "react/jsx-runtime";
 export default function LoginRegister(){
     return(
         <Fragment>
-            <div className="flex flex-row">
+            <div className="sm:flex sm:flex-col flex flex-row">
                 <Link to="/registro">
                     <button className="text-xl p-5 ">Registro</button>
                 </Link>

@@ -22,10 +22,11 @@ export default function UserBarInfo({username}:dataUser){
 
     return(
         <Fragment>
-            <div className="flex flex-row p-5 items-center gap-20 text-2xl">
-                    
-            <h3 className="flex flex-row items-center gap-2"><TbUserPentagon size={25}/> {username}</h3>
-            <IoLogOutOutline className="cursor-pointer" size={25} onClick={()=>clearCookie()}/>
+            
+            <IoLogOutOutline className="cursor-pointer sm:hidden" size={25} onClick={()=>clearCookie()}/>
+            <div className="sm:flex sm:flex-col  flex flex-row p-5 items-center gap-20 text-2xl">
+            <h3 className="flex flex-row items-center gap-2 "><TbUserPentagon size={25}/> {username}</h3>
+            <IoLogOutOutline className="cursor-pointer " size={25} onClick={()=>clearCookie()}/>
             </div>
         </Fragment>
     )
