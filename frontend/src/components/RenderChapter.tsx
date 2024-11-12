@@ -21,7 +21,7 @@ export default function RenderChapter({data}:RenderChapterProps){
     console.log(data)
 
 
-    const [pepe,setPepe] = useState<Chapter[]>([])
+    const [chapter,setChapter] = useState<Chapter[]>([])
     const [indexChapter,setIndexChapter] = useState(0)
 
     console.log(data[0].titulo)
@@ -30,33 +30,33 @@ export default function RenderChapter({data}:RenderChapterProps){
    
     useEffect(()=>{
   
-      const loadChapters = async()=>{await findChapters(data[0]).then(res=>setPepe(res?.data))} 
+      const loadChapters = async()=>{await findChapters(data[0]).then(res=>setChapter(res?.data))} 
   
       loadChapters()
   
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
   
-    console.log(pepe)
+    console.log(chapter)
 
   
 
     return(
         <Fragment>
-            <ul className="w-[500px] pl-5 mt-14 font-bold hover:cursor-pointer" >
-            {pepe?.map((item)=>(
-                <li onClick={()=>{setIndexChapter(pepe.indexOf(item))}}> 
+            <ul className="mt-14 font-bold hover:cursor-pointer sm:hidden md:block" >
+            {chapter?.map((item)=>(
+                <li onClick={()=>{setIndexChapter(chapter.indexOf(item))}} className="p-5 w-32"> 
                     {item.capitulo}
                 </li>))}
                 
             </ul>
        
 
-          <div className="text-black bg-white rounded-lg  max-h-screen  overflow-auto">
-            <h2 className="font-bold text-4xl justify-self-center pb-4 pt-4">{pepe[0]?.titulo}</h2>
-              {pepe[0]? (
+          <div className="text-black bg-white rounded-lg felx max-h-screen overflow-auto ">
+            <h2 className="font-bold text-4xl justify-self-center">{chapter[0]?.titulo}</h2>
+              {chapter[0]? (
                 <div className="prose">
-                  {parse(pepe[indexChapter].texto)}
+                  {parse(chapter[indexChapter].texto)}
                 </div>): ""
 
               }

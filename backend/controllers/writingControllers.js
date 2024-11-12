@@ -8,13 +8,13 @@ export const updateStory = async (req,res)=>{
     try {
         const {Titulo,Capitulo,Fecha,Texto} = req.body
         console.log(Capitulo)
-        const novelTarget = await writingSchema.findOne({titulo: Titulo})
+        const novelTarget = await writingSchema.find({titulo: Titulo})
          
-       console.log(novelTarget)
+        const updateChapterFilter = novelTarget.filter((item)=>{return item.capitulo === Capitulo})
        
-        if(novelTarget && novelTarget.capitulo === Capitulo){
-            const update = await writingSchema.findOneAndUpdate({titulo: Titulo, capitulo:Capitulo},{texto: Texto},{new:true})
-            await update.save()
+        if(updateChapterFilter){
+            await writingSchema.findOneAndUpdate({titulo: Titulo, capitulo:Capitulo},{texto: Texto},{new:true})
+            
             res.json({message:"Writing updated"})
 
         }else{

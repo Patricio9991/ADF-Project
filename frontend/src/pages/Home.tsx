@@ -5,7 +5,7 @@ import NavBar from "../components/NavBar";
 import News from "./News";
 // import Fantasy from '../assets/fantasy.png'
 // import Cat from '../assets/sleepingCat.gif'
-import unicorn from '../assets/varios/uicorn.webp'
+
 
 
 
@@ -23,13 +23,9 @@ export default function Home(){
             
 
             <NavBar/>
-            <div className="flex flex-row justify-start ">
+            <div className="flex sm:flex-col md:flex-row justify-evenly ">
                 <Books/>
                 <News/>
-
-                <div className="justify-self-end self-end absolute bottom-2 right-40">
-                    <img src={unicorn} className="h-[200px]"></img>
-                </div>
             </div>
            
         </Fragment>

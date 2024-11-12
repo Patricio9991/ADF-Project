@@ -30,7 +30,7 @@ export default function BookCard({title,imgSRC,sinopsis}:bookInfo){
             <div className="w-[300px] p-6 hover:w-[310px] cursor-pointer">
                 <h2 className="text-2xl font-semi-bold text-center pb-2
                 relative inline-block text-black  before:absolute before:left-0 before:bottom-0 before:w-0 before:h-1.5 before:bg-purple-500 before:transition-all before:duration-500 hover:before:w-full">{title}</h2>
-                <div className="bg-sky-500 shadow-lg" onClick={()=>setModalFlag(true)}>
+                <div className="bg-sky-500 shadow-lg pointer-events-none md:pointer-events-auto" onClick={()=>setModalFlag(true)}>
                     <img src={imgSRC || ""} alt={title}/>
                 </div>
                 <div className="flex flex-row gap-3 pt-2 ">
@@ -66,7 +66,7 @@ export default function BookCard({title,imgSRC,sinopsis}:bookInfo){
                                 
                                 Swal.fire({
                                     title: '¡Descarga en curso!',
-                                    text: `¡${title} se ha descargará pronto!`,
+                                    text: `¡${title} se descargará pronto!`,
                                     icon: 'success',
                                 });
                                 // Ajusta el tiempo de espera según sea necesario
@@ -77,7 +77,7 @@ export default function BookCard({title,imgSRC,sinopsis}:bookInfo){
 </a>
                     
                     
-                    {modalFlag ? <div ><BookModal title={title} imgSRC={imgSRC} sinopsis={sinopsis}
+                    {modalFlag ? <div className=""><BookModal title={title} imgSRC={imgSRC} sinopsis={sinopsis}
                     close={()=>setModalFlag(false)}/></div>: ""}
                 </div>
 

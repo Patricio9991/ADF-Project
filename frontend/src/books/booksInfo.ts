@@ -58,6 +58,7 @@ export const ADFbooks: Novel[] = [
     {
         
         titulo:"Cuando Aster descubrió el Abismo",
+        cover: covers.Aster,
         digital:true,
         fisico:false,
         finalizado:false
