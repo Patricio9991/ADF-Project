@@ -24,7 +24,7 @@ export function Layout() {
       <div className="">
 
         <Link to="/">
-          <IoChevronBackSharp size={30} className={`absolute left-0 top-5 hover:cursor-pointer ${backArrow}`} />
+          <IoChevronBackSharp size={30} className={`sm:hidden absolute left-0 top-5 hover:cursor-pointer ${backArrow}`} />
         </Link>
   
         {/* Rutas dentro del layout */}
