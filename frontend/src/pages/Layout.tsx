@@ -21,7 +21,7 @@ export function Layout() {
     const novelsURL = ADFbooks.filter((item)=>{return item.titulo})
 
     return (
-      <div className="h-fit ">
+      <div className="">
 
         <Link to="/">
           <IoChevronBackSharp size={30} className={`absolute left-0 top-5 hover:cursor-pointer ${backArrow}`} />

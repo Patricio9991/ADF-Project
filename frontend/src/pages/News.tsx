@@ -18,7 +18,7 @@ export default function News(){
     console.log(novels)
     return(
         <Fragment>
-            <div className="bg-white md:w-[700px] h-[400px] rounded-lg  mt-5 overflow-auto sm:w-[100px]">
+            <div className="bg-white sm:w-[700px] h-[400px] rounded-lg  mt-5 overflow-auto ">
                 <h2 className="text-center font-semibold text-xl pb-6 items-center">Novedades</h2>
                 
                 {novels.map((item:Novel)=> <NovelPill titulo={item.titulo}/>)}
